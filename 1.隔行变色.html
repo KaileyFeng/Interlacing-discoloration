@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>隔行变色</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .box {
+            width: 600px;
+            list-style: none;
+            margin: 0 auto;
+        }
+
+        li {
+            text-align: center;
+            height: 30px;
+            line-height: 30px;
+        }
+
+        .bg0 {
+            background: lavenderblush;
+        }
+
+        .bg1 {
+            background: lavender;
+        }
+        .active{
+            background: lightblue
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="box" class="box">
+        <li>在 HTML DOM 中，所有事物都是节点。DOM 是被视为节点树的 HTML</li>
+        <li>在 HTML DOM 中，所有事物都是节点。DOM 是被视为节点树的 HTML</li>
+        <li>在 HTML DOM 中，所有事物都是节点。DOM 是被视为节点树的 HTML</li>
+        <li>在 HTML DOM 中，所有事物都是节点。DOM 是被视为节点树的 HTML</li>
+        <li>在 HTML DOM 中，所有事物都是节点。DOM 是被视为节点树的 HTML</li>
+        <li>在 HTML DOM 中，所有事物都是节点。DOM 是被视为节点树的 HTML</li>
+        <li>在 HTML DOM 中，所有事物都是节点。DOM 是被视为节点树的 HTML</li>
+        <li>在 HTML DOM 中，所有事物都是节点。DOM 是被视为节点树的 HTML</li>
+    </ul>
+</body>
+<script>
+    var box = document.getElementById('box');
+    var list = box.getElementsByTagName('li')
+
+    for (var i = 0; i < list.length; i++) {
+
+        /* 
+            // if判断
+        if (i % 2 === 0) {
+            list[i].style.background = 'lightblue';
+        } else {
+            list[i].style.background = 'lightsteelblue';
+        }
+        */
+
+        /* 
+            // switch判断
+        switch (i % 2) {
+            case 0:
+                list[i].style.background = 'pink';
+                break;
+            default:
+                list[i].style.background = 'red';
+        }
+        */
+
+        list[i].className = i%2?'bg1':'bg0'
+        list[i].onmouseover = function(){
+            this._a = this.className;
+            this.className = 'active'
+        }
+        list[i].onmouseout = function(){
+            this.className = this._a;
+        }
+    }
+</script>
+
+</html>
